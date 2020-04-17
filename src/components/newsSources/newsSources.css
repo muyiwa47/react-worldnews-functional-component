@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display|Shadows+Into+Light&display=swap');
+
+.sources {
+    padding: 10px;
+    text-align: left;
+    margin: 10px 0px;
+    -webkit-box-shadow: 7px 11px 28px -16px rgba(0,0,0,0.71);
+    -moz-box-shadow: 7px 11px 28px -16px rgba(0,0,0,0.71);
+    box-shadow: 7px 11px 28px -16px rgba(0,0,0,0.71);
+}
+
+.source_name {
+    font-family: 'Playfair Display', serif;
+    color: #f72323;
+}
+
+.source_category {
+    color : #4287f5;
+    font-family: 'Shadows Into Light', cursive;
+}

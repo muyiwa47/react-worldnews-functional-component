@@ -1,24 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect, useState} from 'react';
+import { BrowserRouter as Router, Switch, Route, useParams } from "react-router-dom";
+import Header from './components/header/header';
+import NewsSources from './components/newsSources/newsSources';
+import Footer from './components/footer/footer';
+import NewsDetails from './components/newsDetails/newsDetails';
+import axios from "axios";
 import './App.css';
 
 function App() {
+  const [data, setData] = useState([]);
+  // const apiKey = 'cbbf845e87d94bfa99f0f1419fbe6b00';
+  const apiKey = '49e68def73af41b1927f24680bccc357';
+  useEffect(() => {
+    axios
+      .get(`http://newsapi.org/v2/sources?apiKey=${apiKey}`)
+      .then(result => setData(result.data.sources));
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Router>
+        <Switch>
+          <Route path="/:id" children={<Child />} />
+          <Route exact path="/">
+           <Header id="Sources" location="home" />
+           <NewsSources data={data} />
+          </Route>
+        </Switch>
+        </Router>
+        <Footer />
+    </div>
+  );
+}
+
+function Child() {
+  let { id } = useParams();
+  return (
+    <div>
+       <Header id={id} />
+       <NewsDetails id={id} />
     </div>
   );
 }
