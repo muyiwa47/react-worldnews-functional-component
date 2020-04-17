@@ -9,7 +9,6 @@ import './App.css';
 
 function App() {
   const [data, setData] = useState([]);
-  // const apiKey = 'cbbf845e87d94bfa99f0f1419fbe6b00';
   const apiKey = '49e68def73af41b1927f24680bccc357';
   useEffect(() => {
     axios
