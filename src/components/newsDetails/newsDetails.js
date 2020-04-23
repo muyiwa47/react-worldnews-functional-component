@@ -5,7 +5,6 @@ import './newsDetails.css';
 
 export default function NewsDetails(props) {
     const [data, setData] = useState([]);
-    // const apiKey = 'cbbf845e87d94bfa99f0f1419fbe6b00';
     const apiKey = '49e68def73af41b1927f24680bccc357';
     function checkImage(url){
       debugger;
@@ -14,8 +13,6 @@ export default function NewsDetails(props) {
            } else {
           return url
         }
-      // var defaultImage = defaultImg;
-      // return url ? url : defaultImage
     }
     useEffect(() => {
         axios
