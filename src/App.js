@@ -5,19 +5,26 @@ import NewsSources from './components/newsSources/newsSources';
 import Footer from './components/footer/footer';
 import NewsDetails from './components/newsDetails/newsDetails';
 import axios from "axios";
+import loading from './loading.gif';
 import './App.css';
 
 function App() {
   const [data, setData] = useState([]);
+  const [isLoading, setValue] = useState(true);
   const apiKey = '49e68def73af41b1927f24680bccc357';
+  
   useEffect(() => {
     axios
       .get(`http://newsapi.org/v2/sources?apiKey=${apiKey}`)
-      .then(result => setData(result.data.sources));
+      .then(result => {
+        setData(result.data.sources)
+        setValue(false)
+      });
   }, []);
 
   return (
     <div className="App">
+      { (isLoading === true) ? <img src={loading} alt="" className="preloader" /> : null}
         <Router>
         <Switch>
           <Route path="/:id" children={<Child />} />
@@ -27,7 +34,7 @@ function App() {
           </Route>
         </Switch>
         </Router>
-        <Footer />
+        { (isLoading === false) ? <Footer /> : null}
     </div>
   );
 }

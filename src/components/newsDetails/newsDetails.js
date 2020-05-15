@@ -1,26 +1,33 @@
 import React,  {useEffect, useState} from 'react';
 import axios from "axios";
 import defaultImg from "./image-not-found.png"
+import loading from './loading.gif'
 import './newsDetails.css';
 
 export default function NewsDetails(props) {
     const [data, setData] = useState([]);
+    const [isLoading, setValue] = useState(true);
     const apiKey = '49e68def73af41b1927f24680bccc357';
     function checkImage(url){
-      debugger;
         if ((url === null) || (url === "null") || (url === "")){
           return defaultImg
            } else {
           return url
         }
     }
+
     useEffect(() => {
         axios
           .get(`https://newsapi.org/v2/top-headlines?sources=${props.id}&apiKey=${apiKey}`)
-          .then(result => setData(result.data.articles));
+          .then((result) => {
+            setData(result.data.articles)
+            setValue(false)
+          });
       }, [props.id]);
+
   return (
     <div className="newsDetails">
+      { (isLoading === true) ? <img src={loading} alt="" className="preloader" /> : null}
       { data.map((item) => {
           return (
               <div className="newsDetails_item" key={item.publishedAt}>
