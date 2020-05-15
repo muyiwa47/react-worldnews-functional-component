@@ -12,10 +12,10 @@ function App() {
   const [data, setData] = useState([]);
   const [isLoading, setValue] = useState(true);
   const apiKey = '49e68def73af41b1927f24680bccc357';
-  
+
   useEffect(() => {
     axios
-      .get(`http://newsapi.org/v2/sources?apiKey=${apiKey}`)
+      .get(`https://newsapi.org/v2/sources?apiKey=${apiKey}`)
       .then(result => {
         setData(result.data.sources)
         setValue(false)
