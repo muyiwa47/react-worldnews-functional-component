@@ -1,7 +1,8 @@
 import React,  {useEffect, useState} from 'react';
 import axios from "axios";
 import defaultImg from "./image-not-found.png"
-import loading from './loading.gif'
+import loading from './loading.gif';
+import Header from '../header/header';
 import './newsDetails.css';
 
 export default function NewsDetails(props) {
@@ -17,16 +18,18 @@ export default function NewsDetails(props) {
     }
 
     useEffect(() => {
+        const { match: { params } } = props;
         axios
-          .get(`https://newsapi.org/v2/top-headlines?sources=${props.id}&apiKey=${apiKey}`)
+          .get(`https://newsapi.org/v2/top-headlines?sources=${params.id}&apiKey=${apiKey}`)
           .then((result) => {
             setData(result.data.articles)
             setValue(false)
           });
-      }, [props.id]);
+      }, [props]);
 
   return (
     <div className="newsDetails">
+      <Header id={props.match.params.id} />
       { (isLoading === true) ? <img src={loading} alt="" className="preloader" /> : null}
       { data.map((item) => {
           return (

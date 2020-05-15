@@ -38,9 +38,6 @@
 }
 
 @media only screen and (max-width: 800px) {
-  body {
-    background-color: lightblue;
-  }
 
   .newsDetails_item {
     text-align: justify;
