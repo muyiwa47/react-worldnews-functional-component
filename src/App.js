@@ -6,12 +6,10 @@ import Footer from './components/footer/footer';
 import NewsDetails from './components/newsDetails/newsDetails';
 import axios from "axios";
 import loading from './loading.gif';
-import Filter from './components/filter/filter';
 import './App.css';
 
 function App() {
   let [data, setData] = useState([]);
-  let [CategoryData, setByCategory] = useState([]);
   const [isLoading, setValue] = useState(true);
   const apiKey = '49e68def73af41b1927f24680bccc357';
 
@@ -24,15 +22,6 @@ function App() {
       });
   }, []);
 
-
-  let filterSources = (e) => {
-     let newData = [];
-     newData = data.filter((source) => (source.category === e.target.id.toLowerCase()));
-     setByCategory(newData)
-     console.log(CategoryData)
-     return CategoryData
-  }
-
   return (
 
     <div className="App">
@@ -41,7 +30,6 @@ function App() {
           <Route path="/:id" component={ NewsDetails } />
           <Route exact path="/">
            <Header id="Sources" location="home" />
-           <Filter filterSources={filterSources} />
            <NewsSources data={data} />
           </Route>
         </Router>
