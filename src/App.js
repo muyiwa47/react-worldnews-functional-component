@@ -4,12 +4,14 @@ import Header from './components/header/header';
 import NewsSources from './components/newsSources/newsSources';
 import Footer from './components/footer/footer';
 import NewsDetails from './components/newsDetails/newsDetails';
+import Filter from './components/filter/filter';
 import axios from "axios";
 import loading from './loading.gif';
 import './App.css';
 
 function App() {
   let [data, setData] = useState([]);
+  let [filter, setFilter] = useState([]);
   const [isLoading, setValue] = useState(true);
   const apiKey = '49e68def73af41b1927f24680bccc357';
 
@@ -22,6 +24,11 @@ function App() {
       });
   }, []);
 
+  function filterSources(e){
+    setFilter(e.target.id.toLowerCase())
+    return e.target.id
+  }
+
   return (
 
     <div className="App">
@@ -29,8 +36,11 @@ function App() {
         <Router>
           <Route path="/:id" component={ NewsDetails } />
           <Route exact path="/">
-           <Header id="Sources" location="home" />
-           <NewsSources data={data} />
+           <section style={{ marginBottom : "50px" }}>
+             <Header id="Sources" location="home" />
+             <Filter filterSources={filterSources} />
+             <NewsSources data={data} filter={filter} />
+           </section>
           </Route>
         </Router>
         { (isLoading === false) ? <Footer /> : null}

@@ -10,11 +10,15 @@
 }
 
 .source_name {
-    font-family: 'Playfair Display', serif;
-    color: #f72323;
+    font-family: 'Cinzel', serif;
+    color: #ff6600
 }
 
 .source_category {
     color : #4287f5;
     font-family: 'Shadows Into Light', cursive;
+}
+
+a {
+    color : white;
 }

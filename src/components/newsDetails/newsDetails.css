@@ -3,11 +3,18 @@
 .newsDetails_item {
     padding: 10px;
     text-align: left;
-    margin: 10px 0px;
+    margin: 5px 0px;
     -webkit-box-shadow: 7px 11px 28px -16px rgba(0,0,0,0.71);
     -moz-box-shadow: 7px 11px 28px -16px rgba(0,0,0,0.71);
     box-shadow: 7px 11px 28px -16px rgba(0,0,0,0.71);
     display: flex;
+    background-color: #ffffff;
+    color: black;
+}
+
+.newsDetails_item a {
+    color: black;
+    text-decoration: none;
 }
 
 .newsDetails_title {
