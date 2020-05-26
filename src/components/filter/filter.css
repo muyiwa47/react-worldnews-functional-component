@@ -48,7 +48,7 @@
         transition-duration: 0.3s;
     }
 
-      .container {
+    .container {
         display: inline-block;
         cursor: pointer;
         width : 40px;
@@ -58,24 +58,19 @@
         padding: 5px;
         top: 0px;
         left: 0px;
-      }
+    }
 
-      .filter input[type="radio"]:checked + label {
+    .filter input[type="radio"]:checked + label {
         background-color: #6495ed;
         cursor: pointer;
         color:rgb(8, 16, 134)
-      }
+    }
 
-      .slideout {
+    .slideout {
         right: -200px;
         -webkit-transition-duration: 0.3s;
         -moz-transition-duration: 0.3s;
         -o-transition-duration: 0.3s;
         transition-duration: 0.3s;
-      }
-
-      filter label {
-
-      }
-
+    }
 }

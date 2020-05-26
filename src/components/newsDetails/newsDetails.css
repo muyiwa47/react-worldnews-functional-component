@@ -38,6 +38,8 @@
     width: 100%; /* or any custom size */
     height: 100%;
     object-fit: contain;
+    max-width: 300px;
+    max-height: 250px;
 }
 
 @media only screen and (max-width: 800px) {
@@ -54,5 +56,6 @@
     top: 50%;
     left: 50%;
     position : absolute;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
+    width: 10%
   }
